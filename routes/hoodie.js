@@ -1,22 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const Mahasiswa = require("../Models/Mahasiswa");
+const Hoodie = require("../Models/Hoodie");
 
 // create api for mahasiswa
 router.post("/", async (req, res) => {
   // tampung dlu input mahasiswa
-  const mahasiswaPost = new Mahasiswa({
-    npm: req.body.npm,
+  const hoodiePost = new Hoodie({
     nama: req.body.nama,
-    alamat: req.body.alamat,
+    ukuran: req.body.ukuran,
+    harga: req.body.harga,
   });
 
   // simpan data dengan try cacth
   try {
     //simpan data nya
-    const mahasiswa = await mahasiswaPost.save();
+    const hoodie = await hoodiePost.save();
     //beri response
-    res.json(mahasiswa);
+    res.json(hoodie);
   } catch (error) {
     res.json({ massege: error });
   }
@@ -25,37 +25,34 @@ router.post("/", async (req, res) => {
 //Read
 router.get("/", async (req, res) => {
   try {
-    const mahasiswa = await Mahasiswa.find();
-    res.json(mahasiswa);
+    const hoodie = await Hoodie.find();
+    res.json(hoodie);
   } catch (error) {
     res.json({ message: error });
   }
 });
 
-router.put("/:mahasiswaId", async (req, res) => {
+router.put("/:hoodieId", async (req, res) => {
   const data = {
-    npm: req.body.npm,
     nama: req.body.nama,
-    alamat: req.body.alamat,
+    ukuran: req.body.ukuran,
+    harga: req.body.harga,
   };
 
   try {
-    const mahasiswa = await Mahasiswa.updateOne(
-      { _id: req.params.mahasiswaId },
-      data
-    );
-    res.json(mahasiswa);
+    const hoodie = await Hoodie.updateOne({ _id: req.params.hoodieId }, data);
+    res.json(hoodie);
   } catch (error) {
     res.json({ message: error });
   }
 });
 
-router.delete("/:mahasiswaId", async (req, res) => {
+router.delete("/:hoodieId", async (req, res) => {
   try {
-    const mahasiswa = await Mahasiswa.deleteOne({
-      _id: req.params.mahasiswaId,
+    const hoodie = await Hoodie.deleteOne({
+      _id: req.params.hoodieId,
     });
-    res.json(mahasiswa);
+    res.json(hoodie);
   } catch (error) {
     res.json({ message: error });
   }

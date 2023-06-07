@@ -12,11 +12,13 @@ app.use(
 );
 app.use(bodyParse.json());
 
-const mahasiswaRoutes = require("./routes/mahasiswa");
-const dosenRoutes = require("./routes/dosen");
+const celana_cargoRoutes = require("./routes/celana_cargo");
+const hoodieRoutes = require("./routes/hoodie");
+const authRoutes = require("./routes/auth");
 
-app.use("/mahasiswa", mahasiswaRoutes);
-app.use("/dosen", dosenRoutes);
+app.use("/celana_cargo", celana_cargoRoutes);
+app.use("/hoodie", hoodieRoutes);
+app.use("/auth", authRoutes);
 
 // kneksi ke database mongodb
 mongoose.connect(process.env.DB_CONNECTION, {

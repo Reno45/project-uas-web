@@ -1,8 +1,8 @@
-// schema Mahasiswa
+// schema Hoodie
 const mongoose = require("mongoose");
-const router = require("../routes/dosen");
+const router = require("../routes/hoodie");
 
-const DosenSchema = mongoose.Schema({
+const HoodieSchema = mongoose.Schema({
   nidn: {
     type: String,
     require: true,
@@ -21,4 +21,4 @@ const DosenSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Dosen", DosenSchema);
+module.exports = mongoose.model("Hoodie", HoodieSchema);

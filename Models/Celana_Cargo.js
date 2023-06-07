@@ -1,8 +1,8 @@
-// schema Mahasiswa
+// schema Celana Cargo
 const mongoose = require("mongoose");
-const router = require("../routes/mahasiswa");
+const router = require("../routes/celana_cargo");
 
-const MahasiswaSchema = mongoose.Schema({
+const Celana_CargoSchema = mongoose.Schema({
   npm: {
     type: String,
     require: true,
@@ -21,4 +21,4 @@ const MahasiswaSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Mahasiswa", MahasiswaSchema);
+module.exports = mongoose.model("Celana_Cargo", Celana_CargoSchema);
