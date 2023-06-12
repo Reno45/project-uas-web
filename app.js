@@ -15,6 +15,7 @@ app.use(bodyParse.json());
 const celana_cargoRoutes = require("./routes/celana_cargo");
 const hoodieRoutes = require("./routes/hoodie");
 const authRoutes = require("./routes/auth");
+const kemeja = require("./routes/kemeja");
 
 app.use("/celana_cargo", celana_cargoRoutes);
 app.use("/hoodie", hoodieRoutes);

@@ -1,18 +1,18 @@
-// schema Hoodie
+// schema Kemeja
 const mongoose = require("mongoose");
-const router = require("../routes/hoodie");
+const router = require("../routes/kemeja");
 
-const HoodieSchema = mongoose.Schema({
+const KemejaSchema = mongoose.Schema({
   nama: {
     type: String,
     require: true,
   },
-  ukuran: {
+  jenis: {
     type: String,
     required: true,
   },
   harga: {
-    type: Number,
+    type: String,
     required: true,
   },
   createdAt: {
@@ -21,4 +21,4 @@ const HoodieSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Hoodie", HoodieSchema);
+module.exports = mongoose.model("Kemeja", KemejaSchema);

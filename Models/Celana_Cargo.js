@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 const router = require("../routes/celana_cargo");
 
 const Celana_CargoSchema = mongoose.Schema({
-  npm: {
+  nama: {
     type: String,
     require: true,
   },
-  nama: {
+  jenis: {
     type: String,
     required: true,
   },
-  alamat: {
+  harga: {
     type: String,
     required: true,
   },

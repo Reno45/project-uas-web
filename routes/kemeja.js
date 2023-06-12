@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const Celana_Cargo = require("../Models/Celana_Cargo");
+const Kemeja = require("../Models/Kemeja");
 
 // Import verifyToken
 const verifyToken = require("../config/verifyToken");
 
-// create api for mahasiswa
+// create api for kemeja
 router.post("/", verifyToken, async (req, res) => {
-  // tampung dlu input mahasiswa
-  const celana_cargoPost = new Celana_Cargo({
+  // tampung dlu input kemeja
+  const kemejaPost = new Kemeja({
     nama: req.body.nama,
     jenis: req.body.jenis,
     harga: req.body.harga,
@@ -17,9 +17,9 @@ router.post("/", verifyToken, async (req, res) => {
   // simpan data dengan try cacth
   try {
     //simpan data nya
-    const celana_cargo = await celana_cargoPost.save();
+    const kemeja = await kemeja.save();
     //beri response
-    res.json(celana_cargo);
+    res.json(kemeja);
   } catch (error) {
     res.json({ massege: error });
   }
@@ -28,14 +28,14 @@ router.post("/", verifyToken, async (req, res) => {
 //Read
 router.get("/", verifyToken, async (req, res) => {
   try {
-    const celana_cargo = await Celana_Cargo.find();
-    res.json(celana_cargo);
+    const kemeja = await Kemeja.find();
+    res.json(kemeja);
   } catch (error) {
     res.json({ message: error });
   }
 });
 
-router.put("/:celana_cargoId", async (req, res) => {
+router.put("/:kemejaId", async (req, res) => {
   const data = {
     nama: req.body.nama,
     jenis: req.body.jenis,
@@ -43,22 +43,19 @@ router.put("/:celana_cargoId", async (req, res) => {
   };
 
   try {
-    const celana_cargo = await Celana_Cargo.updateOne(
-      { _id: req.params.celana_cargoId },
-      data
-    );
-    res.json(celana_cargo);
+    const kemeja = await Kemeja.updateOne({ _id: req.params.kemejaId }, data);
+    res.json(kemeja);
   } catch (error) {
     res.json({ message: error });
   }
 });
 
-router.delete("/:celana_cargoId", async (req, res) => {
+router.delete("/:kemejaId", async (req, res) => {
   try {
-    const celana_cargo = await Celana_Cargo.deleteOne({
-      _id: req.params.celana_cargoId,
+    const kemeja = await Kemeja.deleteOne({
+      _id: req.params.kemejaId,
     });
-    res.json(celana_cargo);
+    res.json(kemeja);
   } catch (error) {
     res.json({ message: error });
   }
